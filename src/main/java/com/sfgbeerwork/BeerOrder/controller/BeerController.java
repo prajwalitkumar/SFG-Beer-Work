@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sfgbeerwork.BeerOrder.model.BeerDto;
+import com.sfgbeerwork.BeerOrder.model.CustomerDto;
 import com.sfgbeerwork.BeerOrder.service.BeerService;
 
 @RequestMapping("/api/v1/beer")
@@ -30,6 +31,11 @@ public class BeerController {
 	public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId)
 	{
 		return new ResponseEntity<>(beerService.getBeerById(beerId),HttpStatus.OK);
+	}
+	@GetMapping("/cus/{customerId}")
+	public ResponseEntity<CustomerDto> getCustomer(@PathVariable("customerId") UUID customerId)
+	{
+		return new ResponseEntity<>(beerService.getCustomerById(customerId),HttpStatus.OK);
 	}
 
 }
